@@ -4,5 +4,6 @@
 /package-lock.json
 
 ## distributes
-/dist
+/public/scripts
+/public/views
 *.tsbuildinfo

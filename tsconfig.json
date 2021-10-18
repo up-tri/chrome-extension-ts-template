@@ -6,13 +6,13 @@
     "allowJs": true,
     "checkJs": true,
 
-    "declaration": true,
-    "declarationMap": true,
-    "sourceMap": true,
-    "declarationDir": "dist/types",
+    "declaration": false,
+    "sourceMap": false,
+    "declarationMap": false,
+    "incremental": true,
+    "declarationDir": null,
 
-    "outDir": "dist",
-    "composite": true,
+    "composite": false,
     "removeComments": true,
     // "noEmit": false,
     "isolatedModules": false,
@@ -44,9 +44,6 @@
     "inlineSources": false,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
   },
   "include": [
     "src/**/*"

@@ -2,5 +2,5 @@
 /coverage
 /dist
 /webpack.config.js
-/webpack/**
 /.eslintrc.js
+/public/**

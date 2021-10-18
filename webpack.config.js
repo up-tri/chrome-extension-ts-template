@@ -16,22 +16,25 @@ function recursiveFindHTML(dirname) {
       return sub.isFile() ? [currentPath] : recursiveFindHTML(currentPath);
     })
     .filter(pathname => /\.html$/.test(pathname))
-    .map(pathname => pathname.replace(path.join(__dirname, "src/html/"), "views"));
+    .map(pathname => pathname.replace(path.join(__dirname, "src/html/"), ""));
 };
 
 /** @type {import('webpack').Configuration} */
 module.exports = {
   mode: ENV,
+  experiments: {
+    outputModule: true
+  },
   entry: {
+    sw: path.join(__dirname, "src/ts/sw.ts"),
     app: [
-      path.join(__dirname, "src/ts/index.ts"),
       path.join(__dirname, "src/scss/app.scss"),
     ]
   },
   output: {
-    clean: true,
+    clean: false,
     path: path.resolve(__dirname, "public"),
-    filename: "js/[name].js",
+    filename: "scripts/[name].js",
     library: {
       type: "module"
     },
