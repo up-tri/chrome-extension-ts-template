@@ -22,21 +22,18 @@ function recursiveFindHTML(dirname) {
 /** @type {import('webpack').Configuration} */
 module.exports = {
   mode: ENV,
-  experiments: {
-    outputModule: true
-  },
   entry: {
-    sw: path.join(__dirname, "src/ts/sw.ts"),
-    app: [
+    sw: [
+      path.join(__dirname, "src/ts/sw.ts"),
       path.join(__dirname, "src/scss/app.scss"),
-    ]
+    ],
   },
   output: {
     clean: false,
     path: path.resolve(__dirname, "public"),
     filename: "scripts/[name].js",
     library: {
-      type: "module"
+      type: "umd"
     },
     globalObject: "this"
   },
@@ -53,7 +50,7 @@ module.exports = {
           {
             loader: "ts-loader",
             options: {
-              configFile: ENV === "production" ? "tsconfig.prod.json" : "tsconfig.json",
+              configFile: "tsconfig.json",
             }
           }
         ]
@@ -82,7 +79,7 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: "css/app.[hash].css",
+      filename: "views/css/app.[hash].css",
     }),
     new CopyPlugin({
       patterns: [{
@@ -90,6 +87,6 @@ module.exports = {
         to: path.resolve(__dirname, 'public/images/'),
       }]
     }),
-    ...recursiveFindHTML(path.join(__dirname, "src/html")).map(filename => new HtmlPlugin({ filename, template: `src/html/${filename}` }))
+    ...recursiveFindHTML(path.join(__dirname, "src/html")).map(filename => new HtmlPlugin({ filename: `views/${filename}`, template: `src/html/${filename}` }))
   ]
 };

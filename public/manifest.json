@@ -15,8 +15,7 @@
   },
   "author": "yourname",
   "background": {
-    "service_worker": "scripts/sw.js",
-    "type": "module"
+    "service_worker": "scripts/sw.js"
   },
   "permissions": [
     "webNavigation"
