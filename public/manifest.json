@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "Chrome Extension TypeScript template",
+  "description": "Chrome Extension TypeScript template",
+  "default_locale": "ja",
+  "version": "0.0.1",
+  "action": {
+    "default_icon": {
+      "16": "images/icon-16.png",
+      "24": "images/icon-24.png",
+      "36": "images/icon-36.png"
+    },
+    "default_title": "Click Me",
+    "default_popup": "views/popup.html"
+  },
+  "author": "yourname",
+  "background": {
+    "service_worker": "scripts/sw.js",
+    "type": "module"
+  },
+  "permissions": [
+    "webNavigation"
+  ]
+}

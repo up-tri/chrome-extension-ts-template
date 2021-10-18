@@ -1,7 +1,5 @@
-# static webpage template
+# chrome extension ts template
 
-サクッと静的 html ページを実装するためのテンプレート
+## deveopment
 
-## developer
-
-- up-tri <yaki-shake@up-tri.me>
+up-tri <yaki-shake@up-tri.me>

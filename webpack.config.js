@@ -16,7 +16,7 @@ function recursiveFindHTML(dirname) {
       return sub.isFile() ? [currentPath] : recursiveFindHTML(currentPath);
     })
     .filter(pathname => /\.html$/.test(pathname))
-    .map(pathname => pathname.replace(path.join(__dirname, "src/html/"), ""));
+    .map(pathname => pathname.replace(path.join(__dirname, "src/html/"), "views"));
 };
 
 /** @type {import('webpack').Configuration} */
@@ -30,10 +30,10 @@ module.exports = {
   },
   output: {
     clean: true,
-    path: path.resolve(__dirname, "dist"),
-    filename: "js/[name].[hash].js",
+    path: path.resolve(__dirname, "public"),
+    filename: "js/[name].js",
     library: {
-      type: "umd"
+      type: "module"
     },
     globalObject: "this"
   },
@@ -83,8 +83,8 @@ module.exports = {
     }),
     new CopyPlugin({
       patterns: [{
-        from: path.resolve(__dirname, 'src/img/'),
-        to: path.resolve(__dirname, 'dist/img/'),
+        from: path.resolve(__dirname, 'src/images/'),
+        to: path.resolve(__dirname, 'public/images/'),
       }]
     }),
     ...recursiveFindHTML(path.join(__dirname, "src/html")).map(filename => new HtmlPlugin({ filename, template: `src/html/${filename}` }))
